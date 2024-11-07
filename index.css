@@ -5,11 +5,12 @@
 
 header {
     width: 100%;
-    background-color: green;
+    border-bottom: black 3px solid;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
 
 .nav-container {
     display: flex;
@@ -23,5 +24,10 @@ header {
 
 .nav-container li a {
     text-decoration: none;
-    color: #f2f2f2;
+    color: black;
+}
+
+.logo {
+    width: 50px;
+    padding: 10px;
 }
