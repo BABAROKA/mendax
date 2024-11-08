@@ -4,7 +4,7 @@ body{
 
 #login-form {
   width: 350px;
-  margin: 50px auto;
+  margin: 8% auto auto 54.5%;
   padding: 20px;
   background-color: #f2f2f2;
   border: 1px solid #111;
@@ -18,7 +18,7 @@ body{
 }
 
 .details input[type="text"], .details input[type="password"] {
-  width: 100%;
+  width: 95%;
   height: 40px;
   padding: 10px;
   font-size: 16px;
@@ -34,13 +34,25 @@ button[type="submit"] {
   font-size: 16px;
   border: none;
   border-radius: 5px;
-  background-color: #111;
+  background-color: #010101;
   color: #f2f2f2;
   cursor: pointer;
 }
 
 button[type="submit"]:hover {
   background-color: #222;
+}
+
+.forgot-password {
+  margin-top: 20px;
+  text-align: center;
+  
+  
+}
+.forgot-password a {
+  color: #000;
+  text-decoration: none;
+  font-size: 18px;
 }
 
 .create-account {
@@ -51,12 +63,12 @@ button[type="submit"]:hover {
 .create-account a {
   color: #111;
   text-decoration: none;
+  font-size:18px
 }
 
-.create-account a:hover {
-  text-decoration: underline;
+.line{
+  margin-top: 15px;
 }
-
 /* Responsive design */
 
 @media only screen and (max-width: 768px) {
