@@ -2,7 +2,7 @@
 <html>
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <script src="index.js"></script>
     <head>
         <link rel="stylesheet" href="index.css">
     </head>
@@ -13,8 +13,8 @@
             <ul class="nav-container">
                 <li><a href="/index.html"><img src="data/images/home.svg" alt="Home"></a></li>
                 <li class="search">
-                    <a href="/index.html"><img src="data/images/search.svg" alt="Search"></a>
-                    <input type="text" placeholder="Search">
+                    <button id="toggle-button" onclick="toggleSearch()"><img src="data/images/search.svg" alt="Search"></button>
+                    <input id="toggle-input" type="text" placeholder="Search">
                 </li>
                 <li><a href="/index.html"><img src="data/images/notification.svg" alt="Notification"></a></li>
             </ul>
@@ -22,5 +22,40 @@
         <a href="/index.html"><img class="profile" src="data/images/profile.svg" alt="Profile"></a>
     </header>
     <body>
+        <div class="messages">
+            <ul>
+                <li>
+                    <div class="user-info">
+                        <img src="data/images/users/cat.jpg" alt="User 1" class="rounded-image">
+                        <div>
+                            <p class="username">John Doe</p>
+                            <p class="last-text">Hello, how are you?</p>
+                        </div>
+                    </div>
+                    <hr class="list-separator">
+                </li>
+                
+                <li>
+                    <div class="user-info">
+                        <img src="data/images/users/portrait-woman.jpg" alt="User 2" class="rounded-image">
+                        <div>
+                            <p class="username">Jane Smith</p>
+                            <p class="last-text">What's up?</p>
+                        </div>
+                    </div>
+                    <hr class="list-separator">
+                </li>
+                <li>
+                    <div class="user-info">
+                        <img src="data/images/users/portrait-man.jpg" alt="User 3" class="rounded-image">
+                        <div>
+                            <p class="username">Bob Johnson</p>
+                            <p class="last-text">Hi, how's it going?</p>
+                        </div>
+                    </div>
+                    <hr class="list-separator">
+                </li>
+              </ul>
+        </div>
     </body>
 </html>
