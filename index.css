@@ -4,6 +4,7 @@
 }
 
 header {
+    background-color: #f2f2f2;
     position: fixed;
     top: 0;
     width: 100%;
@@ -14,7 +15,7 @@ header {
 }
 
 .profile {
-    width: 30px;
+    width: 25px;
     padding-right: 20px;
     transition: transform 0.2s ease;
 }
@@ -44,29 +45,27 @@ header {
     align-items: center;
 }
 
-.search input {
-    visibility: hidden;
-    width: 0px;
+#toggle-input {
+    display: none;
+    width: 200px;
     height: 30px;
     border-radius: 20px;
     border: 3px solid #111;
     padding-left: 5px;
     outline: none;
-    overflow: hidden;
-    transition: width 1s ease;
 }
 
-.search:hover input {
-    visibility: visible;
-    width: 200px;
+#toggle-button{
+    border: none;
+    background-color: #f2f2f2;
 }
 
-.search:hover img{
-    display: none;
+#toggle-button img{
+    width: 25px;
 }
 
 .nav-container li a img {
-    width: 30px;
+    width: 25px;
     transition: transform 0.2s ease;
 }
 
@@ -75,7 +74,50 @@ header {
 }
 
 .logo {
-    width: 45px;
+    width: 35px;
     padding: 5px;
     padding-left: 20px;
+}
+
+
+body {
+    background-color: #f2f2f2;
+}
+
+.messages {
+    padding-top: 50px;
+    width: 20%;
+    height: 100vh;
+    border-right: #111 4px solid;
+}
+
+.list-separator {
+    width: 90%;
+    height: 1px;
+    background-color: #222;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    gap: 20px;
+}
+
+.rounded-image {
+    object-fit: cover;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.username {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.last-text {
+    color: #222;
 }
