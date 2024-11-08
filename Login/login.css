@@ -1,54 +1,94 @@
+body{
+  background-color: #f2f2f2;
+}
+
 #login-form {
-    width: 300px;
-    margin: 10% auto auto 900px;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
+  width: 350px;
+  margin: 8% auto auto 54.5%;
+  padding: 20px;
+  background-color: #f2f2f2;
+  border: 1px solid #111;
+  border-radius: 5px;
+
+}
+
+.details {
+  margin-bottom: 20px;
+  border-bottom: 1px solid #111;
+}
+
+.details input[type="text"], .details input[type="password"] {
+  width: 95%;
+  height: 40px;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+}
+
+button[type="submit"] {
+  width: 100%;
+  height: 40px;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #010101;
+  color: #f2f2f2;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #222;
+}
+
+.forgot-password {
+  margin-top: 20px;
+  text-align: center;
   
-  .details {
-    margin-bottom: 20px;
-  }
   
-  label {
-    display: block;
-    margin-bottom: 10px;
+}
+.forgot-password a {
+  color: #000;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.create-account {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.create-account a {
+  color: #111;
+  text-decoration: none;
+  font-size:18px
+}
+
+.line{
+  margin-top: 15px;
+}
+/* Responsive design */
+
+@media only screen and (max-width: 768px) {
+  #login-form {
+    width: 80%;
+    margin: 20px auto;
   }
-  
-  input[type="text"], input[type="password"] {
+}
+
+@media only screen and (max-width: 480px) {
+  #login-form {
     width: 90%;
-    height: 40px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    margin: 10px auto;
   }
-  
+  .details input[type="text"], .details input[type="password"] {
+    height: 30px;
+    font-size: 14px;
+  }
   button[type="submit"] {
-    width: 100%;
-    height: 40px;
-    background-color: #4CAF50;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+    height: 30px;
+    font-size: 14px;
   }
-  
-  button[type="submit"]:hover {
-    background-color: #3e8e41;
-  }
-  
-  .forgot-password, .create-account {
-    margin-top: 20px;
-    text-align: center;
-  }
-  
-  .forgot-password a, .create-account a {
-    color: #4CAF50;
-    text-decoration: none;
-  }
-  
-  .forgot-password a:hover, .create-account a:hover {
-    text-decoration: underline;
-  }
+}
