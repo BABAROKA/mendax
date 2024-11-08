@@ -5,10 +5,20 @@
 
 header {
     width: 100%;
-    background-color: green;
+    border-bottom: #111 3px solid;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+}
+
+.profile {
+    width: 30px;
+    padding-right: 20px;
+    transition: transform 0.2s ease;
+}
+
+.profile:hover {
+    transform: scale(1.15);
 }
 
 .nav-container {
@@ -18,10 +28,52 @@ header {
 }	
 
 .nav-container li {
-    padding: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .nav-container li a {
     text-decoration: none;
-    color: #f2f2f2;
+    color: #111;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+}
+
+.search input {
+    visibility: hidden;
+    width: 0px;
+    height: 30px;
+    border-radius: 20px;
+    border: 3px solid #111;
+    padding-left: 5px;
+    outline: none;
+    overflow: hidden;
+    transition: width 1s ease;
+}
+
+.search:hover input {
+    visibility: visible;
+    width: 200px;
+}
+
+.search:hover img{
+    display: none;
+}
+
+.nav-container li a img {
+    width: 30px;
+    transition: transform 0.2s ease;
+}
+
+.nav-container li a img:hover {
+    transform: scale(1.15);
+}
+
+.logo {
+    width: 45px;
+    padding: 5px;
+    padding-left: 20px;
 }
