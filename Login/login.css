@@ -7,22 +7,22 @@ body{
   background-color: #fff;
 }
 
-header {
-  position: fixed;
-  top: 0;
-  width: 100%;
+.logologin{
+  display: flex;
+  justify-content: center;
+  gap: 400px;
+  align-items: center;
+  height: 80vh;
 }
 
+
 .logo {
-  display: inline;
   width: 220px;
-  margin-top: 9%;
-  margin-left: 20%;
 }
 
 #login-form {
   width: 350px;
-  margin: 8% auto auto 54.5%;
+  height: 310px;
   padding: 20px;
   background-color: #fff;
   border: 1px solid #111;
