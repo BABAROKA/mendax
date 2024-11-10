@@ -1,22 +1,26 @@
 * {
     padding: 0;
     margin: 0;
+    font-family: 'Trebuchet MS', sans-serif;
 }
 
 header {
     background-color: #f2f2f2;
+    border: #fff 2px solid;
     position: fixed;
     top: 0;
     width: 100%;
-    border-bottom: #111 3px solid;
+    height: 50px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    z-index: 999;
+    
 }
 
 .profile {
     width: 25px;
-    padding-right: 20px;
+    margin-right: 20px;
     transition: transform 0.2s ease;
 }
 
@@ -50,14 +54,27 @@ header {
     width: 200px;
     height: 30px;
     border-radius: 20px;
-    border: 3px solid #111;
-    padding-left: 5px;
+    border: none;
+    padding-left: 15px;
     outline: none;
+    animation: shrink 0.2s linear;
+    font-size: 18px;
+}
+
+#toggle-input.show {
+    display: block;
+    animation: grow 0.2s linear;
 }
 
 #toggle-button{
+    cursor: pointer;
     border: none;
     background-color: #f2f2f2;
+    transition: transform 0.2s ease;
+}
+
+#toggle-button:hover{
+    transform: scale(1.15);
 }
 
 #toggle-button img{
@@ -81,36 +98,99 @@ header {
 
 
 body {
+    background-color: #fff;
+}
+
+.home {
+    display: flex;
+}
+
+.feed {
+    width: 80vw;
+    display: grid;
+    justify-content: center;
+    margin-left: 20vw;
+    padding: 50px;
+    padding-top: 80px;
+    gap: 50px;
+}
+
+.post {
     background-color: #f2f2f2;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    padding-bottom: 10px;
+    gap: 20px;
+}
+
+.post-content img {
+    object-fit: cover;
+    width: 35vw;
+    height: 35vw;
+    border-radius: 5px;
+}
+
+.above-image {
+    position: absolute;
+    width: 35vw;
+    height: 35vw;
+}
+
+.post-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.post-user img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
 }
 
 .messages {
-    padding-top: 50px;
-    width: 20%;
-    height: 100vh;
-    border-right: #111 4px solid;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    top: 50px;
+    width: 20vw;
+    overflow-y: scroll;
+    background-color: #f2f2f2;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.messages::-webkit-scrollbar{ 
+    display: none;
 }
 
 .list-separator {
     width: 90%;
-    height: 1px;
-    background-color: #222;
+    height: 2px;
+    background-color: #fff;
     margin-left: auto;
     margin-right: auto;
+    border-radius: 50px;
 }
 
 .user-info {
     display: flex;
     align-items: center;
-    padding: 20px;
+    padding: 15px;
     gap: 20px;
 }
 
 .rounded-image {
     object-fit: cover;
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
+    border: #fff 2px solid;
 }
 
 .username {
@@ -120,4 +200,20 @@ body {
 
 .last-text {
     color: #222;
+    opacity: 0.7;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+@keyframes grow {
+    from {
+        width: 0;
+    }
+    to {
+        width: 200px;
+    }
 }
