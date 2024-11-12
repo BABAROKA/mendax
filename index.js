@@ -19,3 +19,10 @@ function toggleSearch() {
     });
 }
 
+function like(like) {
+    if (like.children[0].children[0].classList.contains("liked")) {
+        like.children[0].children[0].classList.remove("liked");
+        return
+    }
+    like.children[0].children[0].classList.add("liked");
+}

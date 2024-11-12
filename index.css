@@ -119,6 +119,7 @@ body {
     padding: 20px;
     padding-bottom: 10px;
     border-radius: 5px;
+    box-shadow: #111 0px 0px 2px;
 }
 
 .post-header {
@@ -160,15 +161,27 @@ body {
     border: none;
     margin-top: 7px;
 }
-
-.like svg path {
+#likepath {
     stroke: #111;
-    stroke-width: 60px;
+    stroke-width: 50px;
     fill: transparent;
+    stroke-dasharray: 1600;
+    stroke-dashoffset: 3200;
+}
+#likepath.liked {
+    fill: red;
+    transform-origin: center center;
+    animation: heartLike 0.5s ease-in-out forwards;
 }
 
-.actions {
-    display: flex;
+#likepath.disliked {
+    fill: transparent;
+    transform-origin: center center;
+    animation: heartLike 0.5s ease-in-out forwards;
+}
+
+.like svg{
+    overflow: visible
 }
 
 .messages {
@@ -232,5 +245,24 @@ body {
     }
     to {
         width: 200px;
+    }
+}
+
+@keyframes heartLike {
+    /* from {
+        stroke-dashoffset: 3200;
+    }
+    to {
+        stroke-dashoffset: 0;
+    } */
+
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
     }
 }
