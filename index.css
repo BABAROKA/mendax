@@ -6,7 +6,6 @@
 
 header {
     background-color: #f2f2f2;
-    border: #fff 2px solid;
     position: fixed;
     top: 0;
     width: 100%;
@@ -15,7 +14,7 @@ header {
     justify-content: space-between;
     align-items: center;
     z-index: 999;
-    
+    box-shadow: #111 0px 0px 2px;
 }
 
 .profile {
@@ -53,12 +52,12 @@ header {
     display: none;
     width: 200px;
     height: 30px;
+    box-shadow: #111 0px 0px 2px;
     border-radius: 20px;
     border: none;
     padding-left: 15px;
     outline: none;
     font-size: 18px;
-    transition-behavior: allow-discrete;
 }
 #toggle-button{
     cursor: pointer;
@@ -157,7 +156,7 @@ body {
 }
 #likepath {
     stroke: #111;
-    stroke-width: 50px;
+    stroke-width: 30px;
     fill: transparent;
     stroke-dasharray: 1600;
     stroke-dashoffset: 3200;
@@ -174,6 +173,7 @@ body {
     bottom: 0;
     top: 50px;
     width: 20vw;
+    box-shadow: #111 0px 0px 2px;
     overflow-y: scroll;
     background-color: #f2f2f2;
     -ms-overflow-style: none;
@@ -235,7 +235,6 @@ body {
 @keyframes shrink {
     to {
         width: 0;
-        display: none;
     }
     from {
         width: 200px;
