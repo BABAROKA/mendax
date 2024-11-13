@@ -57,15 +57,9 @@ header {
     border: none;
     padding-left: 15px;
     outline: none;
-    animation: shrink 0.2s linear;
     font-size: 18px;
+    transition-behavior: allow-discrete;
 }
-
-#toggle-input.show {
-    display: block;
-    animation: grow 0.2s linear;
-}
-
 #toggle-button{
     cursor: pointer;
     border: none;
@@ -167,17 +161,7 @@ body {
     fill: transparent;
     stroke-dasharray: 1600;
     stroke-dashoffset: 3200;
-}
-#likepath.liked {
-    fill: red;
     transform-origin: center center;
-    animation: heartLike 0.5s ease-in-out forwards;
-}
-
-#likepath.disliked {
-    fill: transparent;
-    transform-origin: center center;
-    animation: heartLike 0.5s ease-in-out forwards;
 }
 
 .like svg{
@@ -248,21 +232,46 @@ body {
     }
 }
 
-@keyframes heartLike {
-    /* from {
-        stroke-dashoffset: 3200;
-    }
+@keyframes shrink {
     to {
-        stroke-dashoffset: 0;
-    } */
+        width: 0;
+        display: none;
+    }
+    from {
+        width: 200px;
+    }
+}
 
+@keyframes like {
     0% {
+        
         transform: scale(1);
     }
     50% {
-        transform: scale(1.2);
+        fill: transparent;
+        transform: scale(0.8);
     }
     100% {
+        stroke: red;
+        fill: red;
+        transform: scale(1);
+    }
+}
+
+@keyframes dislike {
+    0% {
+        fill: red;
+        stroke: red;
+        transform: scale(1);
+    }
+    50% {
+        fill: red;
+        stroke: red;
+        transform: scale(0.8);
+    }
+    100% {
+        stroke: #111;
+        fill: transparent;
         transform: scale(1);
     }
 }
