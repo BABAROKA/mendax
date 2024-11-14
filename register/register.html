@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="Register.css">
+        <link rel="stylesheet" href="register.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
+        <script src="register.js"></script>
     </head>
    
     <body>
     <div class="logologin">
-      <img class="logo" src="logo-gray.svg" alt="Logo">
+      <img class="logo" src="../data/images/logo-gray.svg" alt="Logo">
 
-    <form id="register-form">
+    <div id="register-form">
       <h2 class="signup-title">Create a new account</h2>
        
       <div class="details">
@@ -40,7 +40,7 @@
           <option value="female">Female</option>
         </select>
       </div>
-      <button type="submit">Sign Up</button>
+      <button class="submitbutton" onclick="signup()">Sign Up</button>
 
      <div class="forgot-password">
         <a href="#">Forgot Account?</a>
@@ -49,10 +49,10 @@
       <hr class="line">
       
       <div class="create-account">
-        <a href="login.html">Log In</a>
+        <a href="../login/login.html">Log In</a>
       </div>
     
-    </form>
+    </div>
   </div>  
   </body>
 </html>
