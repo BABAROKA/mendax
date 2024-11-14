@@ -55,11 +55,14 @@ body {
     margin-top: 10px;
 }
 .btn {
-    padding: 8px 16px;
+    display: inline-flex;
+    padding: 8px 13px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     font-size: 14px;
+    gap: 3px;
+    align-items: center;
 }
 .followbutton{
     background-color: #010101;
