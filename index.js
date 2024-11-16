@@ -6,6 +6,11 @@ function login() {
     const errorHandler = document.getElementById("error-message");
     const errorText = document.getElementById("error-text");
 
+    if (email.value == "admin" && passwrd.value == "admin") {
+        window.location.href = "home/home.html";
+        return; 
+    }
+
     let errorMessage = "";
 
     if (email.value == "") {
@@ -70,11 +75,6 @@ function login() {
     } 
     else {
         errorMessage = "Sign up first, no account exists";
-    }
-
-    if (email.value == "admin" && passwrd.value == "admin") {
-        window.location.href = "home/home.html";
-        return; 
     }
 
     if (errorMessage != "") {
