@@ -178,4 +178,7 @@ body{
     height: 30px;
     font-size: 14px;
   }
+  .logo{
+    display: none;
+  }
 }
