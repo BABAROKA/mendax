@@ -146,11 +146,8 @@ label {
     place-content: center;
     overflow: hidden;
     border: var(--secondary-black) solid 1px;
-}
-
-.error-text {
     text-wrap: nowrap;
-    color: var(--white);
+    color: var(--main-black);
 }
 
 @keyframes showError {
@@ -161,15 +158,24 @@ label {
         transform: translateX(-50%) translateY(calc(60% - .5px));
         width: 100px;
     }
+    10% {
+        color: var(--main-black);
+    }
     15% {
         transform: translateX(-50%) translateY(calc(60% - .5px));
         width: 450px;
+        color: var(--white);
     }
     90% {
         transform: translateX(-50%) translateY(calc(60% - .5px));
         width: 450px;
+        color: var(--white);
+    }
+    95% {
+        color: var(--main-black);
     }
     100%{
+        color: var(--main-black);
         width: 100px;
         transform: translateX(-50%) translateY(calc(-100% - .5px));
     }
