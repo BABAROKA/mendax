@@ -112,26 +112,25 @@ body{
 .error-text {
     text-wrap: nowrap;
 }
-
 @keyframes showError {
     0% {
-        transform: translate(-50%, 100%);
+        transform: translateX(-50%) translateY(calc(100% - .5px));
     }
     5% {
-        transform: translate(-50%, -120%);
+        transform: translateX(-50%) translateY(calc(-120% - .5px));
         width: 100px;
     }
     15% {
-        transform: translate(-50%, -120%);
+        transform: translateX(-50%) translateY(calc(-120% - .5px));
         width: 450px;
     }
     90% {
-        transform: translate(-50%, -120%);
+        transform: translateX(-50%) translateY(calc(-120% - .5px));
         width: 450px;
     }
     100%{
         width: 100px;
-        transform: translate(-50%, 100%);
+        transform: translateX(-50%) translateY(calc(100% - .5px));
     }
 }
 

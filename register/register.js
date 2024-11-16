@@ -16,6 +16,7 @@ function signup() {
         if (errorMessage == "") {
             errorMessage = "First name cant be this short";
             if (firstName.value.length == 0) {
+                firstName.focus();
                 errorMessage = "First name cant be empty";
             }
         }
@@ -28,6 +29,7 @@ function signup() {
         if (errorMessage == "") {
             errorMessage = "Last name cant be this short";
             if (lastName.value.length == 0) {
+                lastName.focus();
                 errorMessage = "Last name cant be empty";
             }
         }
@@ -38,6 +40,7 @@ function signup() {
     if (email.value == "") {
         details[0].style.borderBottom = "2px solid #b00000";
         if (errorMessage == "") {
+            email.focus();
             errorMessage = "email input should not be empty";
         }
     }
@@ -68,6 +71,7 @@ function signup() {
     if (passwrd.value == "") {
         details[1].style.borderBottom = "2px solid #b00000";
         if (errorMessage == "") {
+            passwrd.focus();
             errorMessage = "Password cant be empty";
         }
         
@@ -105,5 +109,17 @@ function signup() {
         gender: gender.value
     }));
 
+    document.removeEventListener('keydown', e => {
+        if (e.key == "Enter") {
+            signup();
+        }
+    })
     window.location.href = "../index.html";
 }
+
+
+document.addEventListener('keydown', e => {
+    if (e.key == "Enter") {
+        signup();
+    }
+})
