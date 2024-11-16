@@ -1,11 +1,39 @@
-function login() {
+function signup() {
     const email = document.getElementById("email");
     const passwrd = document.getElementById("password");
+    const firstName = document.getElementById("FirstName");
+    const lastName = document.getElementById("LastName");
+    const birthday = document.getElementById("birthday");
+    const gender = document.getElementById("gender");
     const details = document.getElementsByClassName("details")
     const errorHandler = document.getElementById("error-message");
     const errorText = document.getElementById("error-text");
 
     let errorMessage = "";
+
+    if (firstName.value.length < 1) {
+        details[0].children[0].children[0].style.borderBottom = "2px solid #b00000";
+        if (errorMessage == "") {
+            errorMessage = "First name cant be this short";
+            if (firstName.value.length == 0) {
+                errorMessage = "First name cant be empty";
+            }
+        }
+        
+    }
+
+    if (lastName.value.length < 1) {
+        details[0].children[0].children[1].style.borderBottom = "2px solid #b00000";
+
+        if (errorMessage == "") {
+            errorMessage = "Last name cant be this short";
+            if (lastName.value.length == 0) {
+                errorMessage = "Last name cant be empty";
+            }
+        }
+        
+    }
+
 
     if (email.value == "") {
         details[0].style.borderBottom = "2px solid #b00000";
@@ -37,7 +65,6 @@ function login() {
             
         }
     }
-
     if (passwrd.value == "") {
         details[1].style.borderBottom = "2px solid #b00000";
         if (errorMessage == "") {
@@ -50,29 +77,15 @@ function login() {
         if (errorMessage == "") {
             errorMessage = "Password cant be less than 8 digits";
         }
-
+        
     }
 
-    if (sessionStorage.getItem("user")) {
-        const user = JSON.parse(sessionStorage.getItem("user"));
-        if (user.email != email.value) {
-            if (errorMessage == "") {
-                errorMessage = "Email does not exist";
-            }
+    if (birthday.value == "") {
+        details[2].style.borderBottom = "2px solid #b00000";
+        if (errorMessage == "") {
+            errorMessage = "Select your birthday";
         }
-        if (user.password != passwrd.value) {
-            if (errorMessage == "") {
-                errorMessage = "Password does not match";
-            }
-        }
-    } 
-    else {
-        errorMessage = "Sign up first, no account exists";
-    }
-
-    if (email.value == "admin" && passwrd.value == "admin") {
-        window.location.href = "home/home.html";
-        return; 
+        
     }
 
     if (errorMessage != "") {
@@ -83,5 +96,14 @@ function login() {
         return;
     }
 
-    window.location.href = "home/home.html";
+    sessionStorage.setItem("user", JSON.stringify({
+        email: email.value,
+        password: passwrd.value,
+        firstName: firstName.value,
+        lastName: lastName.value,
+        birthday: birthday.value,
+        gender: gender.value
+    }));
+
+    window.location.href = "../index.html";
 }

@@ -1,111 +1,37 @@
 <!DOCTYPE html>
 <html>
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="index.js"></script>
     <head>
-        <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="index.css" />
+        <script src="index.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     </head>
-    <header>
-        <img class="logo" src="data/images/logo-gray.svg" alt="Logo">
-        <nav class="nav-main">
-            <ul class="nav-container">
-                <li><a href="/index.html"><img src="data/images/home-thin.svg" alt="Home"></a></li>
-                <li class="search">
-                    <button id="toggle-button" onclick="toggleSearch()"><img src="data/images/search-thin.svg" alt="Search"></button>
-                    <input id="toggle-input" type="text" placeholder="Search">
-                </li>
-                <li><a href="/index.html"><img src="data/images/bell-thin.svg" alt="Notification"></a></li>
-            </ul>
-        </nav>
-        <a href="/index.html"><img class="profile" src="data/images/profile-thin.svg" alt="Profile"></a>
-    </header>
+
     <body>
-        <div class="home">
-            <div class="messages">
-                <ul>
-                    <li>
-                        <div class="user-info">
-                            <img src="data/images/users/cat.jpg" alt="User 1" class="rounded-image">
-                            <div class="info">
-                                <p class="username">John Doe</p>
-                                <p class="last-text">Hello, how are you?</p>
-                            </div>
-                        </div>
-                        <div class="list-separator"></div>
-                    </li>
-                    
-                    <li>
-                        <div class="user-info">
-                            <img src="data/images/users/portrait-woman.jpg" alt="User 2" class="rounded-image">
-                            <div class="info">
-                                <p class="username">Jane Smith</p>
-                                <p class="last-text">What's up?</p>
-                            </div>
-                        </div>
-                        <div class="list-separator"></div>
-                    </li>
-                    <li>
-                        <div class="user-info">
-                            <img src="data/images/users/portrait-man.jpg" alt="User 3" class="rounded-image">
-                            <div class="info">
-                                <p class="username">Bob Johnson</p>
-                                <p class="last-text">Hi, how's it going?</p>
-                            </div>
-                        </div>
-                        <div class="list-separator"></div>
-                    </li>
-                  </ul>
-            </div>
-            <div class="feed">
-                <div class="post">
-                    <div class="post-header">
-                        <div class="post-user">
-                            <img src="data/images/users/portrait-man.jpg" alt="User 1">
-                            <p class="username">Bob Johnson</p>
-                        </div>
-                    </div>
-                    <div class="post-content">
-                        <div class="above-image"></div>
-                        <img src="data/images/posts/architecture.jpg" alt="Post">
-                    </div>
-                    <div class="actions">
-                        <button></button>
-                        <button></button>
-                    </div>
+        <div class="logologin">
+            <img class="logo" src="data/images/logo-gray.svg" alt="Logo" />
+
+            <div id="login-form">
+                <div class="details">
+                    <input type="text" id="email" name="email" placeholder="Email" />
                 </div>
-                <div class="post">
-                    <div class="post-header">
-                        <div class="post-user">
-                            <img src="data/images/users/portrait-woman.jpg" alt="User 1">
-                            <p class="username">Jane Smith</p>
-                        </div>
-                    </div>
-                    <div class="post-content">
-                        <div class="above-image"></div>
-                        <img src="data/images/posts/nature (2).jpg" alt="Post">
-                    </div>
-                    <div class="actions">
-                        <button></button>
-                        <button></button>
-                    </div>
+                <div class="details">
+                    <input type="password" id="password" name="password" placeholder="Password" />
                 </div>
-                <div class="post">
-                    <div class="post-header">
-                        <div class="post-user">
-                            <img src="data/images/users/cat.jpg" alt="User 1">
-                            <p class="username">John Doe</p>
-                        </div>
-                    </div>
-                    <div class="post-content">
-                        <div class="above-image"></div>
-                        <img src="data/images/posts/nature.jpg" alt="Post">
-                    </div>
-                    <div class="actions">
-                        <button></button>
-                        <button></button>
-                    </div>
+                <button class="submitbutton" onclick="login()">Log In</button>
+
+                <div class="forgot-password">
+                    <a href="#">Forgot Account?</a>
+                </div>
+
+                <hr class="line" />
+
+                <div class="create-account">
+                    <a href="register/register.html">Sign up</a>
                 </div>
             </div>
+        </div>
+        <div class="error-message" id="error-message">
+            <h3 class="error-text" id="error-text">This is the error</h3>
+        </div>
     </body>
 </html>

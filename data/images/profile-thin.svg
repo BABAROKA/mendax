@@ -1,16 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 488 552">
-  <defs>
-    <style>
-      .cls-1 {
-        fill: none;
-        stroke: #111;
-        stroke-miterlimit: 10;
-        stroke-width: 40px;
-      }
-    </style>
-  </defs>
-  <g id="Layer_1-2" data-name="Layer 1">
-    <path class="cls-1" d="M244,276c70.69,0,128-57.31,128-128S314.69,20,244,20,116,77.31,116,148s57.31,128,128,128ZM198.3,324c-98.5,0-178.3,79.8-178.3,178.3,0,16.4,13.3,29.7,29.7,29.7h388.6c16.4,0,29.7-13.3,29.7-29.7,0-98.5-79.8-178.3-178.3-178.3h-91.4Z"/>
-  </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-round"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></svg>
