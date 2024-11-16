@@ -1,15 +1,22 @@
 function login() {
+
     const email = document.getElementById("email");
     const passwrd = document.getElementById("password");
     const details = document.getElementsByClassName("details")
     const errorHandler = document.getElementById("error-message");
     const errorText = document.getElementById("error-text");
 
+    if (email.value == "admin" && passwrd.value == "admin") {
+        window.location.href = "home/home.html";
+        return; 
+    }
+
     let errorMessage = "";
 
     if (email.value == "") {
         details[0].style.borderBottom = "2px solid #b00000";
         if (errorMessage == "") {
+            email.focus();
             errorMessage = "email input should not be empty";
         }
     }
@@ -37,10 +44,10 @@ function login() {
             
         }
     }
-
     if (passwrd.value == "") {
         details[1].style.borderBottom = "2px solid #b00000";
         if (errorMessage == "") {
+            passwrd.focus();
             errorMessage = "Password cant be empty";
         }
         
@@ -54,7 +61,7 @@ function login() {
     }
 
     if (sessionStorage.getItem("user")) {
-        const user = JSON.parse(sessionStorage.getItem("user"));
+        user = JSON.parse(sessionStorage.getItem("user"));
         if (user.email != email.value) {
             if (errorMessage == "") {
                 errorMessage = "Email does not exist";
@@ -70,11 +77,6 @@ function login() {
         errorMessage = "Sign up first, no account exists";
     }
 
-    if (email.value == "admin" && passwrd.value == "admin") {
-        window.location.href = "home/home.html";
-        return; 
-    }
-
     if (errorMessage != "") {
         errorText.textContent = errorMessage;
         errorHandler.style.animation = null; 
@@ -82,6 +84,16 @@ function login() {
         errorHandler.style.animation = "showError 5s ease-out forwards";
         return;
     }
-
+    document.removeEventListener('keydown', e => {
+        if (e.key == "Enter") {
+            login();
+        }
+    })
     window.location.href = "home/home.html";
 }
+
+document.addEventListener('keydown', e => {
+    if (e.key == "Enter") {
+        login();
+    }
+})

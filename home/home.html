@@ -6,26 +6,27 @@
         <script src="home.js"></script>
     </head>
     <header>
-        <img class="logo" src="../data/images/logo-gray.svg" alt="Logo">
+        <img draggable="false" class="logo" src="../data/images/logo-white.svg" alt="Logo">
+        <button class="messaging" onclick="showMessages()"><img draggable="false" src="../data/images/messages-white.svg" alt="Messages"></button>
         <nav class="nav-main">
             <ul class="nav-container">
-                <li><a href="home.html"><img src="../data/images/home-thin.svg" alt="Home"></a></li>
+                <li><a href="home.html"><img draggable="false" src="../data/images/home-white.svg" alt="Home"></a></li>
                 <li class="search">
-                    <button id="toggle-button" onclick="toggleSearch()"><img src="../data/images/search-thin.svg" alt="Search"></button>
+                    <button id="toggle-button" onclick="toggleSearch()"><img draggable="false" src="../data/images/search-white.svg" alt="Search"></button>
                     <input id="toggle-input" type="text" placeholder="Search">
                 </li>
-                <li><a href="home.html"><img src="../data/images/bell-thin.svg" alt="Notification"></a></li>
+                <li><a href="home.html"><img draggable="false" src="../data/images/bell-white.svg" alt="Notification"></a></li>
             </ul>
         </nav>
-        <a href="../profile/profile.html"><img class="profile" src="../data/images/profile-thin.svg" alt="Profile"></a>
+        <a href="../profile/profile.html"><img draggable="false" class="profile" src="../data/images/profile-white.svg" alt="Profile"></a>
     </header>
     <body>
         <div class="home">
-            <div class="messages">
+            <div class="messages" id="messages">
                 <ul>
                     <li>
                         <div class="user-info">
-                            <img src="../data/images/users/cat.jpg" alt="User 1" class="rounded-image">
+                            <img draggable="false" src="../data/images/users/cat.jpg" alt="User 1" class="rounded-image">
                             <div class="info">
                                 <p class="username">Filan Fisteku</p>
                                 <p class="last-text">Hello, how are you?</p>
@@ -36,7 +37,7 @@
                     
                     <li>
                         <div class="user-info">
-                            <img src="../data/images/users/portrait-woman.jpg" alt="User 2" class="rounded-image">
+                            <img draggable="false" src="../data/images/users/portrait-woman.jpg" alt="User 2" class="rounded-image">
                             <div class="info">
                                 <p class="username">Jane Smith</p>
                                 <p class="last-text">What's up?</p>
@@ -46,7 +47,7 @@
                     </li>
                     <li>
                         <div class="user-info">
-                            <img src="../data/images/users/portrait-man.jpg" alt="User 3" class="rounded-image">
+                            <img draggable="false" src="../data/images/users/portrait-man.jpg" alt="User 3" class="rounded-image">
                             <div class="info">
                                 <p class="username">Bob Johnson</p>
                                 <p class="last-text">Hi, how's it going?</p>
@@ -60,13 +61,13 @@
                 <div class="post">
                     <div class="post-header">
                         <div class="post-user">
-                            <img src="../data/images/users/portrait-man.jpg" alt="User 1">
+                            <img draggable="false" src="../data/images/users/portrait-man.jpg" alt="User 1">
                             <p class="username">Bob Johnson</p>
                         </div>
                     </div>
                     <div class="post-content">
-                        <div class="above-image"></div>
-                        <img src="../data/images/posts/architecture.jpg" alt="Post">
+                        <!-- <div class="above-image"></div> -->
+                        <img draggable="false" src="../data/images/posts/architecture.jpg" alt="Post">
                     </div>
                     <div class="actions">
                         <button onclick="like(this)" class="like" id="1">
@@ -79,13 +80,13 @@
                 <div class="post">
                     <div class="post-header">
                         <div class="post-user">
-                            <img src="../data/images/users/portrait-woman.jpg" alt="User 1">
+                            <img draggable="false" src="../data/images/users/portrait-woman.jpg" alt="User 1">
                             <p class="username">Jane Smith</p>
                         </div>
                     </div>
                     <div class="post-content">
-                        <div class="above-image"></div>
-                        <img src="../data/images/posts/nature (2).jpg" alt="Post">
+                        <!-- <div class="above-image"></div> -->
+                        <img draggable="false" src="../data/images/posts/nature (2).jpg" alt="Post">
                     </div>
                     <div class="actions">
                         <button onclick="like(this)" class="like" id="2">
@@ -98,13 +99,13 @@
                 <div class="post">
                     <div class="post-header">
                         <div class="post-user">
-                            <img src="../data/images/users/cat.jpg" alt="User 1">
+                            <img draggable="false" src="../data/images/users/cat.jpg" alt="User 1">
                             <p class="username">Filan Fisteku</p>
                         </div>
                     </div>
                     <div class="post-content">
-                        <div class="above-image"></div>
-                        <img src="../data/images/posts/nature.jpg" alt="Post">
+                        <!-- <div class="above-image"></div> -->
+                        <img draggable="false" src="../data/images/posts/nature.jpg" alt="Post">
                     </div>
                     <div class="actions">
                         <button onclick="like(this)" class="like" id="3">

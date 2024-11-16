@@ -30,3 +30,12 @@ function like(like) {
     like.children[0].children[0].style.animation = "like 0.2s ease-out forwards";
     isLike[like.id] = true;
 }
+
+function showMessages() {
+    const messages = document.getElementById("messages");
+    if (messages.style.left == "0px"){
+        messages.style.left = "-260px";
+        return;
+    }
+    messages.style.left = "0px"
+}
