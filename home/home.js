@@ -39,3 +39,12 @@ function showMessages() {
     }
     messages.style.left = "0px"
 }
+
+document.addEventListener("click", event => {
+    if (event.target.classList.contains("post-image")) {
+        if (event.detail === 2) {
+            let likes = document.getElementsByClassName("like");
+            like(likes[parseInt(event.target.id) - 1]);
+        }
+    }
+})
