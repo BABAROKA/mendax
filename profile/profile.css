@@ -7,14 +7,131 @@
     --secondary-white: #e2e2e2;
 }
 
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Trebuchet MS', sans-serif;
+}
+
+
+header {
+    background-color: var(--main-black);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 55px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 999;
+    border-bottom: var(--secondary-black) solid 1px
+}
+
+.profile {
+    width: 30px;
+    margin-right: 20px;
+    transition: transform 0.1s ease;
+}
+
+.profile:hover {
+    transform: scale(1.15);
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    list-style: none;
+}
+
+.nav-container li {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.nav-container li a {
+    text-decoration: none;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+}
+
+#toggle-input {
+    display: none;
+    width: 200px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    padding-left: 15px;
+    outline: none;
+    font-size: 18px;
+    background-color: var(--main-white);
+}
+
+#toggle-input::placeholder {
+    color: var(--black);
+    opacity: 0.5;
+}
+
+#toggle-button{
+    cursor: pointer;
+    border: none;
+    background-color: var(--main-black);
+    transition: transform 0.1s ease;
+}
+
+#toggle-button:hover{
+    transform: scale(1.15);
+}
+
+#toggle-button img{
+    width: 30px;
+}
+
+.nav-container li a img {
+    width: 30px;
+    transition: transform 0.1s ease;
+}
+
+.nav-container li a img:hover {
+    transform: scale(1.15);
+}
+
+.logo {
+    width: 35px;
+    padding: 5px;
+    padding-left: 20px;
+}
+
+.messaging {
+    display: none;
+    margin-left: 20px;
+    background-color: var(--main-black);
+    border: none;
+}
+
+.messaging img {
+    width: 30px;
+    transition: transform 0.1s ease;
+}
+
+.messaging img:hover {
+    transform: scale(1.15);
+}
+
 body {
     font-family: 'Trebuchet MS', sans-serif;
     line-height: 1.6;
-    max-width: 720px;
     margin: 0 auto;
-    padding: 20px;
     background-color: var(--black);
 }
+
+.profile-container {
+    max-width: 900px;
+    margin: auto;
+}
+
 .profile-card {
     background-color: var(--main-black);
     border-radius: 5px;
@@ -23,7 +140,7 @@ body {
 }
 .cover-image {
     width: 100%;
-    height: 200px;
+    height: 300px;
     object-fit: cover;
 }
 .profile-content {

@@ -7,8 +7,24 @@
     <link rel="stylesheet" href="profile.css">
     <script src="profile.js"></script>
 </head>
+<header>
+    <img draggable="false" class="logo" src="../data/images/logo-white.svg" alt="Logo">
+    <button class="messaging" onclick="showMessages()"><img draggable="false" src="../data/images/messages-white.svg" alt="Messages"></button>
+    <nav class="nav-main">
+        <ul class="nav-container">
+            <li><a href="home.html"><img draggable="false" src="../data/images/home-white.svg" alt="Home"></a></li>
+            <li class="search">
+                <button id="toggle-button" onclick="toggleSearch()"><img draggable="false" src="../data/images/search-white.svg" alt="Search"></button>
+                <input id="toggle-input" type="text" placeholder="Search">
+            </li>
+            <li><a href="home.html"><img draggable="false" src="../data/images/bell-white.svg" alt="Notification"></a></li>
+        </ul>
+    </nav>
+    <a href="../profile/profile.html"><img draggable="false" class="profile" src="../data/images/profile-white.svg" alt="Profile"></a>
+</header>
 
 <body>
+<div class="profile-container">
     <div class="profile-card">
         <img src="../data/images/users/cat.jpg?height=200&width=600" alt="Cover" class="cover-image">
         <div class="profile-content">
@@ -50,5 +66,6 @@
         <div class="content-item"></div>
         <div class="content-item"></div>
     </div>
+</div>
 </body>
 </html>
