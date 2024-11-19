@@ -11,7 +11,7 @@
 * {
     padding: 0;
     margin: 0;
-    font-family: 'Trebuchet MS', sans-serif;
+    font-family: "Trebuchet MS", sans-serif;
 }
 
 header {
@@ -24,7 +24,7 @@ header {
     justify-content: space-between;
     align-items: center;
     z-index: 999;
-    border-bottom: var(--secondary-black) solid 1px
+    border-bottom: var(--secondary-black) solid 1px;
 }
 
 img {
@@ -81,18 +81,18 @@ img {
     opacity: 0.5;
 }
 
-#toggle-button{
+#toggle-button {
     cursor: pointer;
     border: none;
     background-color: var(--main-black);
     transition: transform 0.1s ease;
 }
 
-#toggle-button:hover{
+#toggle-button:hover {
     transform: scale(1.15);
 }
 
-#toggle-button img{
+#toggle-button img {
     width: 30px;
 }
 
@@ -198,8 +198,8 @@ body {
     transform-origin: center center;
 }
 
-.like svg{
-    overflow: visible
+.like svg {
+    overflow: visible;
 }
 
 .messages {
@@ -215,7 +215,7 @@ body {
     border-right: var(--secondary-black) solid 1px;
     transition: all 0.3s ease-in;
 }
-.messages::-webkit-scrollbar{ 
+.messages::-webkit-scrollbar {
     display: none;
 }
 
