@@ -1,5 +1,11 @@
 <?php
-    session_start();
+
+    include_once "../classes/auth.php";
+    $auth = new Auth();
+    if (!$auth->isLoggedIn()) {
+        header("Location: ../index.php");
+        exit();
+    }
 
         if (isset($_SESSION['username'])) {
             $username = $_SESSION['username'];
