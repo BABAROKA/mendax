@@ -1,37 +1,30 @@
-function signup() {
-    const email = document.getElementById("email");
-    const passwrd = document.getElementById("password");
-    const firstName = document.getElementById("FirstName");
-    const lastName = document.getElementById("LastName");
-    const birthday = document.getElementById("birthday");
-    const gender = document.getElementById("gender");
-    const details = document.getElementsByClassName("details");
+let registersubmit = false;
+
+function showError(errorMessage) {
     const errorHandler = document.getElementById("error-message");
     const errorText = document.getElementById("error-text");
 
+    errorText.textContent = errorMessage;
+    errorHandler.style.animation = "none";
+    errorHandler.offsetHeight;
+    errorHandler.style.animation = "showError 5s ease-out forwards";
+}
+
+function signup() {
+    const email = document.getElementById("email");
+    const passwrd = document.getElementById("password");
+    const username = document.getElementById("username");
+    const birthday = document.getElementById("birthday");
+    const details = document.getElementsByClassName("details");
     let errorMessage = "";
 
-    if (firstName.value.length < 1) {
-        details[0].children[0].children[0].style.borderBottom =
-            "2px solid #b00000";
+    if (username.value.length < 1) {
+        details[0].style.borderBottom = "2px solid #b00000";
         if (errorMessage == "") {
             errorMessage = "First name cant be this short";
-            if (firstName.value.length == 0) {
-                firstName.focus();
+            if (username.value.length == 0) {
+                username.focus();
                 errorMessage = "First name cant be empty";
-            }
-        }
-    }
-
-    if (lastName.value.length < 1) {
-        details[0].children[0].children[1].style.borderBottom =
-            "2px solid #b00000";
-
-        if (errorMessage == "") {
-            errorMessage = "Last name cant be this short";
-            if (lastName.value.length == 0) {
-                lastName.focus();
-                errorMessage = "Last name cant be empty";
             }
         }
     }
@@ -90,31 +83,26 @@ function signup() {
     }
 
     if (errorMessage != "") {
-        errorText.textContent = errorMessage;
-        errorHandler.style.animation = null;
-        errorHandler.offsetHeight;
-        errorHandler.style.animation = "showError 5s ease-out forwards";
+        showError(errorMessage);
         return;
     }
 
-    sessionStorage.setItem(
-        "user",
-        JSON.stringify({
-            email: email.value,
-            password: passwrd.value,
-            firstName: firstName.value,
-            lastName: lastName.value,
-            birthday: birthday.value,
-            gender: gender.value,
-        }),
-    );
+    registersubmit = true;
 
     document.removeEventListener("keydown", (e) => {
         if (e.key == "Enter") {
             signup();
         }
     });
-    window.location.href = "../index.html";
+}
+
+
+function validateForm() {
+    signup()
+    if (!registersubmit) {
+        return false; // Block form submission
+    }
+    return true; // Allow submission
 }
 
 document.addEventListener("keydown", (e) => {
