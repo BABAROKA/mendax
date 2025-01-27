@@ -11,16 +11,15 @@ class User {
         $this->auth = new Auth();
     }
 
-    private function checkIfUserExists($username, $email) {
-        $user = $this->db->query("SELECT * FROM users WHERE username = :username OR email = :email", [
-            ":username" => $username,
+    private function checkIfUserExists($email) {
+        $user = $this->db->query("SELECT * FROM users WHERE email = :email", [
             ":email" => $email
         ]);
 
         if ($user->rowCount() > 0) {
-            return false;
+            return $user->fetch();
         }
-        return $user->fetch();
+        return false;
     }
 
     public function register($username, $email, $pass, $dateOfBirth, $gender) {
@@ -44,21 +43,14 @@ class User {
         return $result !== false; // Return true on success
     }
 
-    public function login($credentials, $pass) {
+    public function login($email, $pass) {
 
-        if (filter_var($credentials, FILTER_VALIDATE_EMAIL)) {
-            $user = $this->checkIfUserExists("", $credentials);
-            if ($user === false) {
-                return false;
-            }
-        }
-
-        $user = $this->checkIfUserExists($credentials, "");
-        if($user === false) {
+        $user = $this->checkIfUserExists($email);
+        if($user == false) {
             return false;
         }
 
-        if ($user && password_verify($pass, $user['pass'])) {
+        if (password_verify($pass, $user['pass'])) {
             $this->auth->login($user['id'], $user['username']);
             return true;
         }

@@ -15,8 +15,6 @@ function login() {
     const email = document.getElementById("email");
     const passwrd = document.getElementById("password");
     const details = document.getElementsByClassName("details");
-    const errorHandler = document.getElementById("error-message");
-    const errorText = document.getElementById("error-text");
 
     let errorMessage = "";
 
@@ -63,20 +61,6 @@ function login() {
         details[1].style.borderBottom = "2px solid #b00000";
         if (errorMessage == "") {
             errorMessage = "Password cant be less than 8 digits";
-        }
-    }
-
-    if (sessionStorage.getItem("user")) {
-        user = JSON.parse(sessionStorage.getItem("user"));
-        if (user.email != email.value) {
-            if (errorMessage == "") {
-                errorMessage = "Email does not exist";
-            }
-        }
-        if (user.password != passwrd.value) {
-            if (errorMessage == "") {
-                errorMessage = "Password does not match";
-            }
         }
     }
 
