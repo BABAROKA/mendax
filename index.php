@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $password = $_POST['password'] ?? '';
         
         if ($user->login($email, $password)) {
-            header("Location: home/home.html");
+            header("Location: home/home.php");
             exit();
         } else {
             $error = "Invalid email or password";

@@ -39,7 +39,7 @@
                     <input id="toggle-input" type="text" placeholder="Search">
                 </li>
                 <li>
-                    <a href="home.html"><img
+                    <a href="home.php"><img
                             draggable="false"
                             src="../data/images/bell-white.svg"
                             alt="Notification"
@@ -47,7 +47,7 @@
                 </li>
             </ul>
         </nav>
-        <a href="../profile/profile.html"><img
+        <a href="../profile/profile.php"><img
                 draggable="false"
                 class="profile"
                 src="../data/images/profile-white.svg"

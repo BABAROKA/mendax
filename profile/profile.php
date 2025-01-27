@@ -1,3 +1,11 @@
+<?php
+    session_start();
+
+        if (isset($_SESSION['username'])) {
+            $username = $_SESSION['username'];
+        }
+        ?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -24,7 +32,7 @@
         <nav class="nav-main">
             <ul class="nav-container">
                 <li>
-                    <a href="../home/home.html"><img
+                    <a href="../home/home.php"><img
                             draggable="false"
                             src="../data/images/home-white.svg"
                             alt="Home"
@@ -72,7 +80,10 @@
                         class="profile-picture"
                     >
                     <div class="profile-info">
-                        <h1 class="profile-name" id="profile-name">hello</h1>
+                        <h1 class="profile-name" id="profile-name">
+                            <?php 
+                            echo htmlspecialchars($username);   
+                            ?></h1>
                         <!-- <p class="profile-username">@janedoe</p> -->
                     </div>
                     <div class="profile-actions">
