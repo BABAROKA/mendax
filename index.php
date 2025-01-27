@@ -1,3 +1,28 @@
+<?php
+require_once 'classes/user.php';
+
+// Initialize dependencies
+$user = new User();
+
+$error = '';
+
+// Handle form submission
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    try {
+        $email = $_POST['email'] ?? '';
+        $password = $_POST['password'] ?? '';
+        
+        if ($user->login($email, $password)) {
+            header("Location: home/home.html");
+            exit();
+        } else {
+            $error = "Invalid email or password";
+        }
+    } catch (Exception $e) {
+        $error = $e->getMessage();
+    }
+}
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -5,12 +30,12 @@
         <script src="index.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     </head>
-
     <body>
         <div class="logologin">
             <img class="logo" src="data/images/logo-white.svg" alt="Logo" />
 
-            <div id="login-form">
+            <form id="login-form" method="POST" onsubmit="return validateForm()">
+                
                 <div class="details">
                     <input
                         type="text"
@@ -27,7 +52,7 @@
                         placeholder="Password"
                     />
                 </div>
-                <button class="submitbutton" onclick="login()">Log In</button>
+                <button type="submit" class="submitbutton">Log In</button>
 
                 <div class="forgot-password">
                     <a href="#">Forgot Password</a>
@@ -36,12 +61,22 @@
                 <div class="line"></div>
 
                 <div class="create-account">
-                    <a href="register/register.html">Sign up</a>
+                    <a href="register/register.php">Sign up</a>
                 </div>
-            </div>
+            </form>
         </div>
+        
+
         <div class="error-message" id="error-message">
-            <h3 id="error-text">Error</h3>
+            <h3 id="error-text"></h3>
         </div>
+
+
+        <?php if ($error !== ''): ?>
+            <script>
+                // Call JavaScript function from PHP
+                showError("<?= htmlspecialchars($error) ?>");
+            </script>
+        <?php endif; ?>
     </body>
 </html>
