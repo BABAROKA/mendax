@@ -1,14 +1,22 @@
+let submit = false;
+
+function showError(errorMessage) {
+    const errorHandler = document.getElementById("error-message");
+    const errorText = document.getElementById("error-text");
+
+    errorText.textContent = errorMessage;
+    errorHandler.style.animation = "none";
+    errorHandler.offsetHeight; // Force reflow
+    errorHandler.style.animation = "showError 5s ease-out forwards";
+}
+
 function login() {
+
     const email = document.getElementById("email");
     const passwrd = document.getElementById("password");
     const details = document.getElementsByClassName("details");
     const errorHandler = document.getElementById("error-message");
     const errorText = document.getElementById("error-text");
-
-    if (email.value == "admin" && passwrd.value == "admin") {
-        window.location.href = "home/home.html";
-        return;
-    }
 
     let errorMessage = "";
 
@@ -70,27 +78,31 @@ function login() {
                 errorMessage = "Password does not match";
             }
         }
-    } else {
-        errorMessage = "Sign up first, no account exists";
     }
 
     if (errorMessage != "") {
-        errorText.textContent = errorMessage;
-        errorHandler.style.animation = null;
-        errorHandler.offsetHeight;
-        errorHandler.style.animation = "showError 5s ease-out forwards";
+        showError(errorMessage);
         return;
     }
+    submit = true;
     document.removeEventListener("keydown", (e) => {
         if (e.key == "Enter") {
             login();
         }
     });
-    window.location.href = "home/home.html";
+}
+
+function validateForm() {
+    login()
+    if (!submit) {
+        return false; // Block form submission
+    }
+    return true; // Allow submission
 }
 
 document.addEventListener("keydown", (e) => {
     if (e.key == "Enter") {
+        
         login();
     }
 });
