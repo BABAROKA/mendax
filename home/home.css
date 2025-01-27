@@ -64,6 +64,10 @@ img {
     align-items: center;
 }
 
+#plusadd {
+    gap: 600px;
+}
+
 #toggle-input {
     display: none;
     width: 200px;

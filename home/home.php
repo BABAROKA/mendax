@@ -1,3 +1,12 @@
+<?php
+
+    include_once "../classes/auth.php";
+    $auth = new Auth();
+    if (!$auth->isLoggedIn()) {
+        header("Location: ../index.php");
+        exit();
+    }
+        ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -22,7 +31,7 @@
         <nav class="nav-main">
             <ul class="nav-container">
                 <li>
-                    <a href="home.html"><img
+                    <a href="home.php"><img
                             draggable="false"
                             src="../data/images/home-white.svg"
                             alt="Home"
@@ -44,15 +53,24 @@
                             src="../data/images/bell-white.svg"
                             alt="Notification"
                         ></a>
-                </li>
+                </li>            
             </ul>
         </nav>
+            <div>
+        <a href="../profile/profile.php"><img
+                draggable="false"
+                class="profile"
+                src="../data/images/plus.svg"
+                alt="Plus"></a>
+
         <a href="../profile/profile.php"><img
                 draggable="false"
                 class="profile"
                 src="../data/images/profile-white.svg"
                 alt="Profile"
             ></a>
+
+            </div>
     </header>
     <body>
         <div class="home">

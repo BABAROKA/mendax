@@ -80,7 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
                 <div class="line"></div>
                 <div class="create-account">
-                    <a href="../index.html">Log In</a>
+                    <a href="../index.php">Log In</a>
                 </div>
             </form>
             <div class="error-message" id="error-message">

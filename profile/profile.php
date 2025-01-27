@@ -55,7 +55,7 @@
                     <input id="toggle-input" type="text" placeholder="Search">
                 </li>
                 <li>
-                    <a href="../home/home.html"><img
+                    <a href="../home/home.php"><img
                             draggable="false"
                             src="../data/images/bell-white.svg"
                             alt="Notification"
@@ -63,12 +63,21 @@
                 </li>
             </ul>
         </nav>
-        <a href="../profile/profile.html"><img
+        <div>
+        <a href="../profile/profile.php"><img
+                draggable="false"
+                class="profile"
+                src="../data/images/plus.svg"
+                alt="Plus"></a>
+
+        <a href="../profile/profile.php"><img
                 draggable="false"
                 class="profile"
                 src="../data/images/profile-white.svg"
                 alt="Profile"
             ></a>
+
+            </div>
     </header>
 
     <body>
