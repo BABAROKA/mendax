@@ -64,7 +64,8 @@
             </ul>
         </nav>
         <div>
-        <a href="../profile/profile.php"><img
+        <a href="#" onclick="openUploadModal()">
+            <img
                 draggable="false"
                 class="profile"
                 src="../data/images/plus.svg"
@@ -173,5 +174,25 @@
                 <div class="content-item"></div>
             </div>
         </div>
+
+        <div id="uploadModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeUploadModal()">&times;</span>
+        <h2>Upload Photo</h2>
+        <form id="uploadForm" action="upload_photo.php" method="POST" enctype="multipart/form-data">
+            <input type="file" name="photo" accept="image/*" required>
+            <button type="submit" class="submitbutton">Upload</button>
+        </form>
+    </div>
+</div>
+<script>
+function openUploadModal() {
+    document.getElementById("uploadModal").style.display = "block";
+}
+
+function closeUploadModal() {
+    document.getElementById("uploadModal").style.display = "none";
+}
+</script>
     </body>
 </html>
