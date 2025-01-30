@@ -11,7 +11,12 @@
             $username = $_SESSION['username'];
         }
 
-        
+        include_once "../classes/database.php";
+        $db = new Database();
+        $userId = $_SESSION['user_id'];
+        $query = "SELECT * FROM photos WHERE user_id = :user_id ORDER BY uploaded_at DESC";
+        $params = [':user_id' => $userId];
+        $photos = $db->query($query, $params)->fetchAll();
         ?>
 
 <!DOCTYPE html>
@@ -165,15 +170,19 @@
                 </div>
             </div>
             <div class="content-grid">
+            <?php foreach ($photos as $photo): ?>
+                <div class="content-item"> 
+                    <img  src="<?= htmlspecialchars($photo['filepath']) ?>" class="content-item" alt="Post">
+                </div>
+                <?php endforeach; ?>
+              <!--  <div class="content-item"></div>
                 <div class="content-item"></div>
                 <div class="content-item"></div>
                 <div class="content-item"></div>
                 <div class="content-item"></div>
                 <div class="content-item"></div>
                 <div class="content-item"></div>
-                <div class="content-item"></div>
-                <div class="content-item"></div>
-                <div class="content-item"></div>
+                <div class="content-item"></div>-->
             </div>
         </div>
 

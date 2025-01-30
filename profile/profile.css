@@ -237,7 +237,8 @@ body {
     gap: 10px;
     margin-top: 20px;
 }
-.content-item {
+.content-item img{
+    max-width: 100%;
     aspect-ratio: 1;
     background-color: var(--secondary-black);
     border-radius: 8px;

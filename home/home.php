@@ -223,10 +223,20 @@
         <div id="uploadModal" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closeUploadModal()">&times;</span>
-        <h2>Upload Photo</h2>
+        <h2 class="modal-title">Upload Photo</h2>
         <form id="uploadForm" action="upload_photo.php" method="POST" enctype="multipart/form-data">
-            <input type="file" name="photo" accept="image/*" required>
-            <button type="submit" class="submitbutton">Upload</button>
+            <div class="file-input-container">
+                <label for="photo" class="file-label">
+                    <span class="file-button">Choose File</span>
+                    <span class="file-name" id="fileName">No file chosen</span>
+                </label>
+                <input type="file" name="photo" id="photo" accept="image/*" required onchange="previewImage(event)">
+            </div>
+           
+            <div id="imagePreviewContainer" class="image-preview-container">
+                <img id="imagePreview" src="#" alt="Image Preview" class="image-preview">
+            </div>
+            <button type="submit" class="submit-button">Upload</button>
         </form>
     </div>
 </div>
@@ -237,6 +247,33 @@ function openUploadModal() {
 
 function closeUploadModal() {
     document.getElementById("uploadModal").style.display = "none";
+    
+    document.getElementById("uploadForm").reset();
+    document.getElementById("imagePreviewContainer").style.display = "none";
+    document.getElementById("fileName").textContent = "No file chosen";
+}
+
+function previewImage(event) {
+    const fileInput = event.target;
+    const fileNameDisplay = document.getElementById("fileName");
+    const imagePreviewContainer = document.getElementById("imagePreviewContainer");
+    const imagePreview = document.getElementById("imagePreview");
+
+    if (fileInput.files.length > 0) {
+        const file = fileInput.files[0];
+        fileNameDisplay.textContent = file.name;
+
+       
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            imagePreview.src = e.target.result;
+            imagePreviewContainer.style.display = "block";
+        };
+        reader.readAsDataURL(file);
+    } else {
+        fileNameDisplay.textContent = "No file chosen";
+        imagePreviewContainer.style.display = "none";
+    }
 }
 </script>
     </body>
