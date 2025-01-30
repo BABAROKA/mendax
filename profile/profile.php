@@ -10,6 +10,8 @@
         if (isset($_SESSION['username'])) {
             $username = $_SESSION['username'];
         }
+
+        
         ?>
 
 <!DOCTYPE html>
@@ -187,7 +189,7 @@
                 </label>
                 <input type="file" name="photo" id="photo" accept="image/*" required onchange="previewImage(event)">
             </div>
-            <!-- Image Preview -->
+           
             <div id="imagePreviewContainer" class="image-preview-container">
                 <img id="imagePreview" src="#" alt="Image Preview" class="image-preview">
             </div>
@@ -202,7 +204,7 @@ function openUploadModal() {
 
 function closeUploadModal() {
     document.getElementById("uploadModal").style.display = "none";
-    // Reset the form and preview when the modal is closed
+    
     document.getElementById("uploadForm").reset();
     document.getElementById("imagePreviewContainer").style.display = "none";
     document.getElementById("fileName").textContent = "No file chosen";
@@ -218,7 +220,7 @@ function previewImage(event) {
         const file = fileInput.files[0];
         fileNameDisplay.textContent = file.name;
 
-        // Display the image preview
+       
         const reader = new FileReader();
         reader.onload = function (e) {
             imagePreview.src = e.target.result;

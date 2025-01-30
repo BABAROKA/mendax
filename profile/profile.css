@@ -286,7 +286,7 @@ body {
     color: var(--secondary-white);
 }
 
-/* File Input Styles */
+
 .file-input-container {
     margin-bottom: 20px;
 }
@@ -323,10 +323,10 @@ body {
     display: none;
 }
 
-/* Image Preview Styles */
+
 .image-preview-container {
     margin-top: 20px;
-    display: none; /* Hidden by default */
+    display: none; 
 }
 
 .image-preview {
@@ -336,7 +336,7 @@ body {
     border: 1px solid var(--secondary-black);
 }
 
-/* Submit Button Styles */
+
 .submit-button {
     background-color: var(--accent-color);
     color: var(--white);
