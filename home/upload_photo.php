@@ -12,33 +12,36 @@ if (!$auth->isLoggedIn()) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['photo'])) {
-    $userId = $_SESSION['user_id']; 
+    $userId = $_SESSION['user_id'];
     $uploadDir = '../data/uploads/';
-
 
     if (!is_dir($uploadDir)) {
         mkdir($uploadDir, 0777, true);
     }
 
+    $filepaths = [];
 
-    $filename = uniqid() . '_' . basename($_FILES['photo']['name']);
-    $filepath = $uploadDir . $filename;
+    foreach ($_FILES['photo']['tmp_name'] as $key => $tmpName) {
+        $filename = uniqid() . '_' . basename($_FILES['photo']['name'][$key]);
+        $filepath = $uploadDir . $filename;
 
-   
-    if (move_uploaded_file($_FILES['photo']['tmp_name'], $filepath)) {
-   
+        if (move_uploaded_file($tmpName, $filepath)) {
+            $filepaths[] = $filepath; 
+        }
+    }
+
+    if (!empty($filepaths)) {
+        $filepathsString = implode(',', $filepaths);
         $query = "INSERT INTO photos (user_id, filename, filepath) VALUES (:user_id, :filename, :filepath)";
         $params = [
             ':user_id' => $userId,
-            ':filename' => $filename,
-            ':filepath' => $filepath
+            ':filename' => $_FILES['photo']['name'][0], // Use the first file's name
+            ':filepath' => $filepathsString
         ];
         $db->query($query, $params);
-
-        header("Location: home.php"); 
-        exit();
-    } else {
-        echo "Failed to upload photo.";
     }
+
+    header("Location: home.php");
+    exit();
 }
 ?>
