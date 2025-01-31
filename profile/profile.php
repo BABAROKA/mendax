@@ -27,6 +27,9 @@
         <title>Profile</title>
         <link rel="stylesheet" href="profile.css">
         <script src="profile.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
     </head>
     <header>
         <img
@@ -170,11 +173,17 @@
                 </div>
             </div>
             <div class="content-grid">
-            <?php foreach ($photos as $photo): ?>
-                <div class="content-item"> 
-                    <img  src="<?= htmlspecialchars($photo['filepath']) ?>" class="content-item" alt="Post">
-                </div>
-                <?php endforeach; ?>
+    <?php foreach ($photos as $photo): ?>
+        <?php
+        // Split the file paths into an array
+        $images = explode(',', $photo['filepath']);
+        foreach ($images as $image): ?>
+            <div class="content-item"> 
+                <img src="<?= htmlspecialchars(trim($image)) ?>" alt="Post">
+            </div>
+        <?php endforeach; ?>
+    <?php endforeach; ?>
+</div>
               <!--  <div class="content-item"></div>
                 <div class="content-item"></div>
                 <div class="content-item"></div>
@@ -196,11 +205,12 @@
                     <span class="file-button">Choose File</span>
                     <span class="file-name" id="fileName">No file chosen</span>
                 </label>
-                <input type="file" name="photo" id="photo" accept="image/*" required onchange="previewImage(event)">
+           
+                <input type="file" name="photo[]" id="photo" accept="image/*" multiple required onchange="previewImage(event)">
             </div>
            
             <div id="imagePreviewContainer" class="image-preview-container">
-                <img id="imagePreview" src="#" alt="Image Preview" class="image-preview">
+              
             </div>
             <button type="submit" class="submit-button">Upload</button>
         </form>
@@ -223,24 +233,46 @@ function previewImage(event) {
     const fileInput = event.target;
     const fileNameDisplay = document.getElementById("fileName");
     const imagePreviewContainer = document.getElementById("imagePreviewContainer");
-    const imagePreview = document.getElementById("imagePreview");
+
+    imagePreviewContainer.innerHTML = ""; // Clear previous previews
 
     if (fileInput.files.length > 0) {
-        const file = fileInput.files[0];
-        fileNameDisplay.textContent = file.name;
+        fileNameDisplay.textContent = fileInput.files.length + " files chosen";
 
-       
-        const reader = new FileReader();
-        reader.onload = function (e) {
-            imagePreview.src = e.target.result;
-            imagePreviewContainer.style.display = "block";
-        };
-        reader.readAsDataURL(file);
+        for (let i = 0; i < fileInput.files.length; i++) {
+            const file = fileInput.files[i];
+            const reader = new FileReader();
+
+            reader.onload = function (e) {
+                const img = document.createElement("img");
+                img.src = e.target.result;
+                img.classList.add("image-preview");
+                imagePreviewContainer.appendChild(img);
+            };
+            reader.readAsDataURL(file);
+        }
+        imagePreviewContainer.style.display = "block";
     } else {
         fileNameDisplay.textContent = "No file chosen";
         imagePreviewContainer.style.display = "none";
     }
 }
 </script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('.slider').slick({
+            dots: true,
+            arrows: false,
+            infinite: true,
+            speed: 400,
+            slidesToShow: 1,
+            adaptiveHeight: true
+        });
+    });
+</script>
+
     </body>
 </html>

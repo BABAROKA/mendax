@@ -119,6 +119,30 @@ header {
     transform: scale(1.15);
 }
 
+.slider {
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.slider img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.slick-prev, .slick-next {
+    z-index: 1;
+}
+
+.slick-prev:before, .slick-next:before {
+    color: var(--main-white);
+}
+
 body {
     font-family: "Trebuchet MS", sans-serif;
     line-height: 1.6;
@@ -332,7 +356,7 @@ body {
 
 .image-preview {
     max-width: 100%;
-    max-height: 300px;
+    max-height: 240px;
     border-radius: 5px;
     border: 1px solid var(--secondary-black);
 }
