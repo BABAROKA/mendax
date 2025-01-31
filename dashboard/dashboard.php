@@ -1,11 +1,16 @@
 <?php
+    include_once "../classes/auth.php";
+    $auth = new Auth();
 
-    // include_once "../classes/auth.php";
-    // $auth = new Auth();
-    // if (!$auth->isLoggedIn()) {
-    //     header("Location: ../index.php");
-    //     exit();
-    // }
+    if (!$auth->isLoggedIn()) {
+        header("Location: ../index.php");
+        exit();
+    }
+
+    if ($_SESSION['username'] !== "admin") {
+        header("Location: ../index.php");
+        exit();
+    }
 
 ?>
 <!DOCTYPE html>
@@ -25,14 +30,14 @@
         <nav class="nav-main">
             <ul class="nav-container">
                 <li>
-                    <a href="home.php"><img
+                    <a href="../home/home.php"><img
                             draggable="false"
                             src="../data/images/home-white.svg"
                             alt="Home"
                     ></a>
                 </li>
                 <li>
-                    <a href="home.php"><img
+                    <a href="../home/home.php"><img
                             draggable="false"
                             src="../data/images/bell-white.svg"
                             alt="Notification"
@@ -64,6 +69,7 @@
                                 <th>Email</th>
                                 <th>Date Of Birth</th>
                                 <th>Gender</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody id="resultsTable">
