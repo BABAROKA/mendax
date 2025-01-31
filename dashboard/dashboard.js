@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 function fetchUsers() {
-    fetch('fetch_users.php')
+    fetch('handle_users.php')
         .then(response => response.json())
         .then(data => {
             if (data != null){
@@ -20,20 +20,33 @@ function displayUsers(users) {
     resultsTable.innerHTML = "";
 
     users.forEach(user => {
-        const row = `<tr>
+        const row = document.createElement("tr");
+        row.innerHTML = `
             <td>${user.id}</td>
             <td>${user.username}</td>
             <td>${user.email}</td>
             <td>${user.date_of_birth}</td>
             <td>${user.gender}</td>
-        </tr>`;
-        resultsTable.innerHTML += row;
+            <td><button class="deleteButton" onclick="deleteUser(${user.id})">Delete</button></td>`;
+        resultsTable.appendChild(row);
     });
+}
+
+function deleteUser(userId) {
+    fetch(`handle_users.php?delete=${userId}`)
+        .then(response => {
+            if (response.ok) {
+                fetchUsers();
+            } else {
+                console.error('Error:', response.statusText);
+            }
+        })
+        .catch(error => console.error('Error:', error));
 }
 
 function filterUsers(searchInput) {
     input = searchInput.value.toLowerCase();
-    fetch('fetch_users.php')
+    fetch('handle_users.php')
         .then(response => response.json())
         .then(users => {
             if (users != null){
