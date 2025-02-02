@@ -37,13 +37,6 @@
                     ></a>
                 </li>
                 <li>
-                    <a href="../home/home.php"><img
-                            draggable="false"
-                            src="../data/images/bell-white.svg"
-                            alt="Notification"
-                    ></a>
-                </li>
-                <li>
                     <a href="../profile/profile.php"><img
                         draggable="false"
                         class="profile"
