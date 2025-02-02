@@ -27,7 +27,7 @@ function getUsers(searchInput) {
     .then(users => {
         if (users != null) {
             users.forEach(user => {
-                resultsContainer.innerHTML += `<div class="user-result"><a href="/profile/profile.php?id=${user.id}">${user.username}</a></div>`
+                resultsContainer.innerHTML += `<div class="user-result"><a href="/mendax/profile/profile.php?id=${user.id}">${user.username}</a></div>`
             });
         }
 
