@@ -6,6 +6,11 @@ $user = new User();
 
 $error = '';
 
+if ($user->isLoggedIn()) {
+    header("Location: home/home.php");
+    exit();
+}
+
 // Handle form submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {

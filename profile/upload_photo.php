@@ -32,9 +32,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['photo'])) {
 
     if (!empty($filepaths)) {
         $filepathsString = implode(',', $filepaths);
-        $query = "INSERT INTO photos (user_id, filename, filepath) VALUES (:user_id, :filename, :filepath)";
+        $query = "INSERT INTO photos (user_id, username, filename, filepath) VALUES (:user_id, :username, :filename, :filepath)";
         $params = [
             ':user_id' => $userId,
+            ':username' => $_SESSION['username'],
             ':filename' => $_FILES['photo']['name'][0], // Use the first file's name
             ':filepath' => $filepathsString
         ];

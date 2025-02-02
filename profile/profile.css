@@ -26,16 +26,6 @@ header {
     border-bottom: var(--secondary-black) solid 1px;
 }
 
-.profile {
-    width: 30px;
-    margin-right: 20px;
-    transition: transform 0.1s ease;
-}
-
-.profile:hover {
-    transform: scale(1.15);
-}
-
 .nav-container {
     display: flex;
     align-items: center;
@@ -43,8 +33,8 @@ header {
 }
 
 .nav-container li {
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 .nav-container li a {
@@ -56,36 +46,8 @@ header {
     align-items: center;
 }
 
-#toggle-input {
-    display: none;
-    width: 200px;
-    height: 30px;
-    border-radius: 5px;
-    border: none;
-    padding-left: 15px;
-    outline: none;
-    font-size: 18px;
-    background-color: var(--main-white);
-}
-
-#toggle-input::placeholder {
-    color: var(--black);
-    opacity: 0.5;
-}
-
-#toggle-button {
-    cursor: pointer;
-    border: none;
-    background-color: var(--main-black);
-    transition: transform 0.1s ease;
-}
-
-#toggle-button:hover {
-    transform: scale(1.15);
-}
-
-#toggle-button img {
-    width: 30px;
+#plusadd {
+    gap: 600px;
 }
 
 .nav-container li a img {
@@ -376,4 +338,21 @@ body {
 
 .submit-button:hover {
     background-color: var(--hover-accent);
+}
+
+.dash-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--main-black);
+    color: var(--white);
+    border: 1px solid var(--secondary-black);
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.dash-button:hover {
+    background-color: var(--secondary-black);
 }

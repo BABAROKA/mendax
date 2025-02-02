@@ -1,23 +1,26 @@
 <?php
 
     include_once "../classes/auth.php";
+    include_once "../classes/database.php";
+    $db = new Database();
     $auth = new Auth();
     if (!$auth->isLoggedIn()) {
         header("Location: ../index.php");
         exit();
     }
 
-        if (isset($_SESSION['username'])) {
-            $username = $_SESSION['username'];
-        }
+    $username = $_SESSION['username'];
+    $userId = $_SESSION['user_id'];
 
-        include_once "../classes/database.php";
-        $db = new Database();
-        $userId = $_SESSION['user_id'];
-        $query = "SELECT * FROM photos WHERE user_id = :user_id ORDER BY uploaded_at DESC";
-        $params = [':user_id' => $userId];
-        $photos = $db->query($query, $params)->fetchAll();
-        ?>
+    if (isset($_GET["id"]) && !empty($_GET["id"])) {
+        $userId = intval($_GET["id"]);
+        $username = $db->query("SELECT username FROM users WHERE id = :id", ["id" => $userId])->fetchAll()[0]["username"];
+    }
+
+    $query = "SELECT * FROM photos WHERE user_id = :user_id ORDER BY uploaded_at DESC";
+    $params = [':user_id' => $userId];
+    $photos = $db->query($query, $params)->fetchAll();
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -47,14 +50,30 @@
         </button>
         <nav class="nav-main">
             <ul class="nav-container">
+
+                <li>
+                    <a href="#" onclick="openUploadModal()">
+                        <img
+                        draggable="false"
+                        src="../data/images/plus.svg"
+                        alt="Plus"></a>
+                </li>
                 <li>
                     <a href="../home/home.php"><img
-                            draggable="false"
-                            src="../data/images/home-white.svg"
-                            alt="Home"
+                        draggable="false"
+                        src="../data/images/home-white.svg"
+                        alt="Home"
                         ></a>
                 </li>
-                <li class="search">
+                <li>
+                    <a href="handler.php">
+                        <img
+                        draggable="false"
+                        src="../data/images/logout.svg"
+                        alt="Plus"></a>
+                    
+                </li>
+                <!-- <li class="search">
                     <button id="toggle-button" onclick="toggleSearch()">
                         <img
                             draggable="false"
@@ -70,28 +89,15 @@
                             src="../data/images/bell-white.svg"
                             alt="Notification"
                         ></a>
-                </li>
+                </li> -->
             </ul>
         </nav>
-        <div>
-        <a href="#" onclick="openUploadModal()">
-            <img
-                draggable="false"
-                class="profile"
-                src="../data/images/plus.svg"
-                alt="Plus"></a>
-
-        <a href="../profile/profile.php"><img
-                draggable="false"
-                class="profile"
-                src="../data/images/profile-white.svg"
-                alt="Profile"
-            ></a>
-
-            </div>
     </header>
 
     <body>
+        <?php if ( $_SESSION['username'] === "admin"): ?>
+            <a href="../dashboard/dashboard.php"><button class="dash-button"><img src="../data/images/dash.svg" alt="Dashbord"></button></a>
+        <?php endif; ?>
         <div class="profile-container">
             <div class="profile-card">
                 <img
@@ -112,47 +118,7 @@
                             ?></h1>
                         <!-- <p class="profile-username">@janedoe</p> -->
                     </div>
-                    <div class="profile-actions">
-                        <button class="btn followbutton">
-                            <svg
-                                width="20"
-                                height="20"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                            >
-                                <path
-                                    d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"
-                                >
-                                </path>
-                                <circle cx="8.5" cy="7" r="4"></circle>
-                                <line x1="20" y1="8" x2="20" y2="14"></line>
-                                <line x1="23" y1="11" x2="17" y2="11"></line>
-                            </svg>
-                            Follow
-                        </button>
-                        <button class="btn messagebutton">
-                            <svg
-                                width="20"
-                                height="20"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                            >
-                                <path
-                                    d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"
-                                >
-                                </path>
-                            </svg>
-                            Message
-                        </button>
-                    </div>
+                    
                     <p class="profile-bio">
                         Passionate photographer 📸 | Travel enthusiast ✈️ |
                         Coffee lover ☕ | Sharing my adventures and capturing
@@ -167,8 +133,6 @@
                     </div>
                     <div class="profile-tabs">
                         <div class="tab active">Posts</div>
-                        <div class="tab">Photos</div>
-                        <div class="tab">Videos</div>
                     </div>
                 </div>
             </div>
@@ -274,5 +238,7 @@ function previewImage(event) {
     });
 </script>
 
-    </body>
+
+
+</body>
 </html>

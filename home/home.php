@@ -10,9 +10,8 @@
     include_once "../classes/database.php";
     $db = new Database();
     $userId = $_SESSION['user_id'];
-    $query = "SELECT * FROM photos WHERE user_id = :user_id ORDER BY uploaded_at DESC";
-    $params = [':user_id' => $userId];
-    $photos = $db->query($query, $params)->fetchAll();
+    $query = "SELECT * FROM photos ORDER BY RAND() LIMIT 10";
+    $photos = $db->query($query)->fetchAll();
         ?>
 <!DOCTYPE html>
 <html>
@@ -41,6 +40,20 @@
         </button>
         <nav class="nav-main">
             <ul class="nav-container">
+
+                <li>
+                    <a href="#" onclick="openUploadModal()"><img
+                    draggable="false"
+                    src="../data/images/plus.svg"
+                    alt="Plus"></a>
+                </li>
+                <li>
+                    <button class="search-button" onclick="showInput()"><img
+                        draggable="false"
+                        src="../data/images/search-white.svg"
+                        alt="Search"
+                    ></button>
+                </li>
                 <li>
                     <a href="home.php"><img
                             draggable="false"
@@ -48,7 +61,15 @@
                             alt="Home"
                         ></a>
                 </li>
-                <li class="search">
+                <li>
+                    <a href="../profile/profile.php"><img
+                        draggable="false"
+                        src="../data/images/profile-white.svg"
+                        alt="Profile"
+                    ></a>
+                </li>
+
+                <!-- <li class="search">
                     <button id="toggle-button" onclick="toggleSearch()">
                         <img
                             draggable="false"
@@ -57,33 +78,27 @@
                         >
                     </button>
                     <input id="toggle-input" type="text" placeholder="Search">
-                </li>
-                <li>
+                </li> -->
+                <!-- <li>
                     <a href="home.php"><img
                             draggable="false"
                             src="../data/images/bell-white.svg"
                             alt="Notification"
                         ></a>
-                </li>            
+                </li>             -->
             </ul>
         </nav>
-            <div>
-        <a href="#" onclick="openUploadModal()"><img
-                draggable="false"
-                class="profile"
-                src="../data/images/plus.svg"
-                alt="Plus"></a>
 
-        <a href="../profile/profile.php"><img
-                draggable="false"
-                class="profile"
-                src="../data/images/profile-white.svg"
-                alt="Profile"
-            ></a>
 
-            </div>
     </header>
-    <body>
+    <body id="body">
+        
+        <div id="overlay" class="overlay">
+            <div id="inputContainer" class="input-container">
+                <input type="text" id="inputField" placeholder="Search User..." onkeyup="getUsers(this)">
+                <div id="resultsContainer"></div>
+            </div>
+        </div>
         <div class="home">
             <div class="messages" id="messages">
                 <ul>
@@ -141,7 +156,7 @@
             <div class="post-header">
                 <div class="post-user">
                     <img draggable="false" src="../data/images/profile-white.svg" alt="Profile">
-                    <p class="username"><?= htmlspecialchars($_SESSION['username']) ?></p>
+                    <p class="username"><?= htmlspecialchars($photo['username']) ?></p>
                 </div>
             </div>
             <div class="post-content slider">
